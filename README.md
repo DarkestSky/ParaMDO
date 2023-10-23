@@ -1,5 +1,5 @@
 This repository contains the following artefacts:
--- /ParaMDO toolchainL: the ParaMDO toolchain;
--- /DSL: the description of domain-specific modeling language of ParaMDO;
--- /Semantic Mapping: the defined mapping semantics of CIM2PIM and PIM2PSM;
--- /Evaluation:  the evaluation artefacts.
+ <br /> - /ParaMDO toolchainL: the ParaMDO toolchain;
+ <br /> - /DSL: the description of domain-specific modeling language of ParaMDO;
+ <br /> - /Semantic Mapping: the defined mapping semantics of CIM2PIM and PIM2PSM;
+ <br /> - /Evaluation:  the evaluation artefacts.
