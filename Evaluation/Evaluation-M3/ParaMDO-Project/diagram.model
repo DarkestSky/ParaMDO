@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pomes="http://www.example.org/pomes">
+  <pomes:EMPDiagram name="CIM Root" rootdiagram="/0" workdir="C:\Users\Sky_p\ICSE24\EvaluationWorkDir">
+    <loopactivity name="Outer Loop" rootdiagram="/0" outDataflow="/0/@dataflow.1 /0/@dataflow.3" inDataflow="/0/@dataflow.0 /0/@dataflow.2" loopbeginparameter="/0/@cimparameter.0" loopmaxparameter="/0/@cimparameter.1" loopgenparameter="/0/@cimparameter.2">
+      <loopactivity name="Inner Loop" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@dataflow.8" inDataflow="/0/@loopactivity.0/@dataflow.7 /0/@loopactivity.0/@dataflow.13" loopbeginparameter="/0/@cimparameter.3" loopmaxparameter="/0/@cimparameter.4" loopgenparameter="/0/@cimparameter.5">
+        <autoactivity name="Preprocess" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.2" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.0 /0/@loopactivity.0/@loopactivity.0/@dataflow.1" execpath="Preprocess.exe"/>
+        <autoactivity name="Generating" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.5" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.3 /0/@loopactivity.0/@loopactivity.0/@dataflow.4 /0/@loopactivity.0/@loopactivity.0/@dataflow.15" execpath="Generating.exe"/>
+        <autoactivity name="Stress Value Analysis" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.9" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.8" execpath="StressValueAnalysis.exe"/>
+        <autoactivity name="Adaptation Estimation" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.11" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.10" execpath="AdaptationEst.exe"/>
+        <autoactivity name="Genetic Algorithm B" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.13 /0/@loopactivity.0/@loopactivity.0/@dataflow.14" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.12" execpath="GA-B.exe"/>
+        <dbmodel name="B Model" rootdiagram="/0" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.5" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.6 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.1" path="B-model.txt"/>
+        <tempdata name="Ready Data" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.2" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.3" path="ready.txt"/>
+        <tempdata name="Stress Calculate Result" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.7 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.15" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.8" path="Stress-Calculate-Result.txt"/>
+        <tempdata name="Stress Value Analysis Result" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.9" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.10" path="Stress-Analysis.txt"/>
+        <tempdata name="Chromosome File" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.13" path="Chromosome.txt"/>
+        <tempdata name="Chromosome File" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.15" path="Chromosome.txt"/>
+        <startnode outdataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.0"/>
+        <endnode indataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.14"/>
+        <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.0" sourcestartnode="/0/@loopactivity.0/@loopactivity.0/@startnode"/>
+        <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.0" sourceProduct="/0/@loopactivity.0/@dbdata.1"/>
+        <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.0" targetProduct="/0/@loopactivity.0/@loopactivity.0/@tempdata.0"/>
+        <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.1" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@tempdata.0"/>
+        <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.1" sourceProduct="/0/@loopactivity.0/@tempdata.2"/>
+        <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.1" targetProduct="/0/@loopactivity.0/@loopactivity.0/@dbmodel.0"/>
+        <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@dbmodel.0"/>
+        <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0" targetProduct="/0/@loopactivity.0/@loopactivity.0/@tempdata.1"/>
+        <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.2" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@tempdata.1"/>
+        <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.2" targetProduct="/0/@loopactivity.0/@loopactivity.0/@tempdata.2"/>
+        <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.3" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@tempdata.2"/>
+        <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.3" targetProduct="/0/@loopactivity.0/@tempdata.3"/>
+        <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.4" sourceProduct="/0/@loopactivity.0/@tempdata.3"/>
+        <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.4" targetProduct="/0/@loopactivity.0/@loopactivity.0/@tempdata.3"/>
+        <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.4" targetendnode="/0/@loopactivity.0/@loopactivity.0/@endnode"/>
+        <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@autoactivity.1" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@tempdata.4"/>
+        <compparallelactivity name="Strength Calculation" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.7" inDataflow="/0/@loopactivity.0/@loopactivity.0/@dataflow.6" instanceSize="/0/@cimparameter.6">
+          <autoactivity name="Preprocess" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.2 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.3" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.0 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.1" execpath="Preprocess.exe"/>
+          <autoactivity name="A-1" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.6" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.4" execpath="A-1.exe"/>
+          <autoactivity name="B-1" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.7" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.5" execpath="B-1.exe"/>
+          <autoactivity name="A-2" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.10" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.9" execpath="A-2.exe"/>
+          <autoactivity name="B-2" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.11" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.8" execpath="B-2.exe"/>
+          <autoactivity name="A-3" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.13 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.20" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.12" connectMutexflows="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@mutexflow.0 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@mutexflow.2" execpath="A-3.exe"/>
+          <autoactivity name="B-3" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.18 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.21" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.17" connectMutexflows="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@mutexflow.1 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@mutexflow.3" execpath="B-3.exe"/>
+          <dbdata name="Stress Cal Log" rootdiagram="/0" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.20 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.21" path="strength-cal-log.txt"/>
+          <tempdata name="B-1" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.3" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.5" path="b-1.txt"/>
+          <tempdata name="B-2" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.7" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.8" path="b-2.txt"/>
+          <tempdata name="B-3" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.11" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.17" path="b-3.txt"/>
+          <tempdata name="A-1" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.2" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.4" path="a-1.txt"/>
+          <tempdata name="A-2" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.6" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.9" path="a-2.txt"/>
+          <tempdata name="A-3" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.10" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.12" path="a-3.txt"/>
+          <tempdata name="A-4" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.13" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.14" path="a-4.txt"/>
+          <tempdata name="B-4" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.18" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.19" path="b-4.txt"/>
+          <startnode outdataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.0"/>
+          <endnode indataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.16"/>
+          <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.0" sourcestartnode="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@startnode"/>
+          <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.0" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@dbmodel.0"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.0" targetProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.3"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.0" targetProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.0"/>
+          <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.1" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.3"/>
+          <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.2" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.0"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.1" targetProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.4"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.2" targetProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.1"/>
+          <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.4" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.1"/>
+          <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.3" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.4"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.3" targetProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.5"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.4" targetProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.2"/>
+          <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.5" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.5"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.5" targetProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.6"/>
+          <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@reduceactivity.0" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.6"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@reduceactivity.0" targetProduct="/0/@loopactivity.0/@loopactivity.0/@tempdata.1"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@reduceactivity.0" targetendnode="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@endnode"/>
+          <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.6" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.2"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.6" targetProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.7"/>
+          <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@reduceactivity.0" sourceProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@tempdata.7"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.5" targetProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dbdata.0"/>
+          <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.6" targetProduct="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dbdata.0"/>
+          <cimmutex name="LogMutex" mutexflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@mutexflow.2 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@mutexflow.3" mutexId="LogMutex"/>
+          <mutexflow activity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.5"/>
+          <mutexflow activity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.6"/>
+          <mutexflow cimmutex="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@cimmutex.0" activity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.5"/>
+          <mutexflow cimmutex="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@cimmutex.0" activity="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@autoactivity.6"/>
+          <reduceactivity name="Reduce Activity" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.15 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.16" inDataflow="/0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.14 /0/@loopactivity.0/@loopactivity.0/@compparallelactivity.0/@dataflow.19" execpath="Reduce.exe"/>
+        </compparallelactivity>
+      </loopactivity>
+      <autoactivity name="Preprocess" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@dataflow.2" inDataflow="/0/@loopactivity.0/@dataflow.0 /0/@loopactivity.0/@dataflow.1" execpath="Preprocess.exe"/>
+      <autoactivity name="Divider" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@dataflow.4" inDataflow="/0/@loopactivity.0/@dataflow.3 /0/@loopactivity.0/@dataflow.12" execpath="Divider.exe"/>
+      <autoactivity name="Sorter" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@dataflow.6" inDataflow="/0/@loopactivity.0/@dataflow.5" execpath="Sorter.exe"/>
+      <autoactivity name="Genetic Algorithm A" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@dataflow.10 /0/@loopactivity.0/@dataflow.11" inDataflow="/0/@loopactivity.0/@dataflow.9" execpath="GA-A.exe"/>
+      <dbdata name="Result Data" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@dataflow.12" path="result.txt"/>
+      <dbdata name="Static Data" rootdiagram="/0" outDataflow="/0/@loopactivity.0/@dataflow.13 /0/@loopactivity.0/@loopactivity.0/@dataflow.1" path="static_data.txt"/>
+      <tempdata name="Ready Data" inDataflow="/0/@loopactivity.0/@dataflow.2" outDataflow="/0/@loopactivity.0/@dataflow.3" path="ready.txt"/>
+      <tempdata name="Data Divide Result" inDataflow="/0/@loopactivity.0/@dataflow.4" outDataflow="/0/@loopactivity.0/@dataflow.5" path="Divide-Result.txt"/>
+      <tempdata name="Data Sort Result" inDataflow="/0/@loopactivity.0/@dataflow.6" outDataflow="/0/@loopactivity.0/@dataflow.7 /0/@loopactivity.0/@loopactivity.0/@dataflow.4" path="Sort-Result.txt"/>
+      <tempdata name="Adaptability Assessment Results" inDataflow="/0/@loopactivity.0/@dataflow.8 /0/@loopactivity.0/@loopactivity.0/@dataflow.11" outDataflow="/0/@loopactivity.0/@dataflow.9 /0/@loopactivity.0/@loopactivity.0/@dataflow.12" path="Adaptability-Assessment-Result.txt"/>
+      <startnode outdataflow="/0/@loopactivity.0/@dataflow.0"/>
+      <endnode indataflow="/0/@loopactivity.0/@dataflow.10"/>
+      <dataflow targetActivity="/0/@loopactivity.0/@autoactivity.0" sourcestartnode="/0/@loopactivity.0/@startnode"/>
+      <dataflow targetActivity="/0/@loopactivity.0/@autoactivity.0" sourceProduct="/0/@dbdata.0"/>
+      <dataflow sourceActivity="/0/@loopactivity.0/@autoactivity.0" targetProduct="/0/@loopactivity.0/@tempdata.0"/>
+      <dataflow targetActivity="/0/@loopactivity.0/@autoactivity.1" sourceProduct="/0/@loopactivity.0/@tempdata.0"/>
+      <dataflow sourceActivity="/0/@loopactivity.0/@autoactivity.1" targetProduct="/0/@loopactivity.0/@tempdata.1"/>
+      <dataflow targetActivity="/0/@loopactivity.0/@autoactivity.2" sourceProduct="/0/@loopactivity.0/@tempdata.1"/>
+      <dataflow sourceActivity="/0/@loopactivity.0/@autoactivity.2" targetProduct="/0/@loopactivity.0/@tempdata.2"/>
+      <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0" sourceProduct="/0/@loopactivity.0/@tempdata.2"/>
+      <dataflow sourceActivity="/0/@loopactivity.0/@loopactivity.0" targetProduct="/0/@loopactivity.0/@tempdata.3"/>
+      <dataflow targetActivity="/0/@loopactivity.0/@autoactivity.3" sourceProduct="/0/@loopactivity.0/@tempdata.3"/>
+      <dataflow sourceActivity="/0/@loopactivity.0/@autoactivity.3" targetendnode="/0/@loopactivity.0/@endnode"/>
+      <dataflow sourceActivity="/0/@loopactivity.0/@autoactivity.3" targetProduct="/0/@dbdata.1"/>
+      <dataflow targetActivity="/0/@loopactivity.0/@autoactivity.1" sourceProduct="/0/@loopactivity.0/@dbdata.0"/>
+      <dataflow targetActivity="/0/@loopactivity.0/@loopactivity.0" sourceProduct="/0/@loopactivity.0/@dbdata.1"/>
+    </loopactivity>
+    <dbdata name="Static Data" rootdiagram="/0" outDataflow="/0/@dataflow.2 /0/@loopactivity.0/@dataflow.1" path="static_data.txt"/>
+    <dbdata name="Result Data" rootdiagram="/0" inDataflow="/0/@dataflow.3 /0/@loopactivity.0/@dataflow.11" path="result.txt"/>
+    <startnode outdataflow="/0/@dataflow.0"/>
+    <endnode indataflow="/0/@dataflow.1"/>
+    <dataflow targetActivity="/0/@loopactivity.0" sourcestartnode="/0/@startnode"/>
+    <dataflow sourceActivity="/0/@loopactivity.0" targetendnode="/0/@endnode"/>
+    <dataflow targetActivity="/0/@loopactivity.0" sourceProduct="/0/@dbdata.0"/>
+    <dataflow sourceActivity="/0/@loopactivity.0" targetProduct="/0/@dbdata.1"/>
+    <cimparameter xsi:type="pomes:IntVariable" varName="OuterLoopBegin"/>
+    <cimparameter xsi:type="pomes:IntVariable" varName="OuterLoopEnd" varVal="2"/>
+    <cimparameter xsi:type="pomes:ConstVariable" varName="OuterLoopCount"/>
+    <cimparameter xsi:type="pomes:IntVariable" varName="InnerLoopBegin"/>
+    <cimparameter xsi:type="pomes:IntVariable" varName="InnerLoopEnd" varVal="2"/>
+    <cimparameter xsi:type="pomes:ConstVariable" varName="InnerLoopCount"/>
+    <cimparameter xsi:type="pomes:IntVariable" varName="ParallelTaskNum" varVal="5"/>
+  </pomes:EMPDiagram>
+  <pomes:PIMWorkflow/>
+</xmi:XMI>

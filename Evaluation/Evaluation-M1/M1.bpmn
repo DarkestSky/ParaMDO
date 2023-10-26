@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions" targetNamespace="http://bpmn.io/schema/bpmn" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="process_4d259c4e-bdb6-40e3-b526-287b421f59ef" isExecutable="true" name="process_4d259c4e-bdb6-40e3-b526-287b421f59ef">
+    <startEvent id="start_2de1f81e-c3b6-432d-ab8c-ec0028c9383e"/>
+    <serviceTask camunda:class="org.buaa.pomes.camunda.caller.InitProcessCaller" id="initProcess_50ca3c0b-272d-4d5f-8e29-bca2713fb8da" name="initProcess">
+      <extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="WORKSPACE">EvaluationWorkDir</camunda:inputParameter>
+        </camunda:inputOutput>
+      </extensionElements>
+    </serviceTask>
+    <subProcess id="container_108b2077-2221-4a5f-8aaf-4760c7f2ca73" name="container_108b2077-2221-4a5f-8aaf-4760c7f2ca73">
+      <subProcess id="container_8b739d3f-5f0a-41fe-89bd-17fd6870e4ac" name="container_8b739d3f-5f0a-41fe-89bd-17fd6870e4ac">
+        <extensionElements>
+          <camunda:executionListener class="org.buaa.pomes.camunda.listener.InitLoopListener" event="start"/>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="loopCount">${0}</camunda:inputParameter>
+            <camunda:inputParameter name="loopBegin">${0}</camunda:inputParameter>
+            <camunda:inputParameter name="loopEnd">${2}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </extensionElements>
+        <subProcess id="container_9bbe3d6b-f411-4437-83d6-5bdfcbfd0eec" name="container_9bbe3d6b-f411-4437-83d6-5bdfcbfd0eec">
+          <extensionElements>
+            <camunda:executionListener class="org.buaa.pomes.camunda.listener.InitLoopListener" event="start"/>
+            <camunda:inputOutput>
+              <camunda:inputParameter name="loopCount">${0}</camunda:inputParameter>
+              <camunda:inputParameter name="loopBegin">${0}</camunda:inputParameter>
+              <camunda:inputParameter name="loopEnd">${2}</camunda:inputParameter>
+            </camunda:inputOutput>
+          </extensionElements>
+          <subProcess id="phase5_aa87962a-5d05-444f-a109-3734cf4ad913" name="phase3">
+            <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase5node1_16cfa7c4-b60a-48c9-bbd1-3c0524ce6cb9" name="Preprocess">
+              <extensionElements>
+                <camunda:inputOutput>
+                  <camunda:inputParameter name="exec_path">Preprocess.exe</camunda:inputParameter>
+                </camunda:inputOutput>
+              </extensionElements>
+            </serviceTask>
+            <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase6node1_2adbcce7-d4eb-4ff1-88da-cf70a489b2be" name="Generating">
+              <extensionElements>
+                <camunda:inputOutput>
+                  <camunda:inputParameter name="exec_path">Generating.exe</camunda:inputParameter>
+                </camunda:inputOutput>
+              </extensionElements>
+            </serviceTask>
+            <sequenceFlow id="Flow_phase5node1_phase6node1_c698b85d-533d-4667-a20e-e79e08630250" sourceRef="phase5node1_16cfa7c4-b60a-48c9-bbd1-3c0524ce6cb9" targetRef="phase6node1_2adbcce7-d4eb-4ff1-88da-cf70a489b2be"/>
+            <startEvent id="start_phase5_ea671591-1020-4821-9a82-63bea85a8917"/>
+            <sequenceFlow id="sequenceFlow_adc714d7-7750-4d78-9169-7774cdbdf7db" sourceRef="start_phase5_ea671591-1020-4821-9a82-63bea85a8917" targetRef="phase5node1_16cfa7c4-b60a-48c9-bbd1-3c0524ce6cb9"/>
+            <endEvent id="end_phase5_c9aae258-99b8-47a3-95e6-91c6813d47be"/>
+            <sequenceFlow id="sequenceFlow_1705d0e1-f328-4d27-b51a-eb9cc84caed4" sourceRef="phase6node1_2adbcce7-d4eb-4ff1-88da-cf70a489b2be" targetRef="end_phase5_c9aae258-99b8-47a3-95e6-91c6813d47be"/>
+          </subProcess>
+          <subProcess id="container_9e24dbe3-1c0f-40da-9656-9cc38cfd30d0" name="container_9e24dbe3-1c0f-40da-9656-9cc38cfd30d0">
+            <extensionElements>
+              <camunda:executionListener class="org.buaa.pomes.camunda.listener.InitLoopListener" event="start"/>
+              <camunda:inputOutput>
+                <camunda:inputParameter name="loopCount">${0}</camunda:inputParameter>
+                <camunda:inputParameter name="loopBegin">${0}</camunda:inputParameter>
+                <camunda:inputParameter name="loopEnd">${2}</camunda:inputParameter>
+              </camunda:inputOutput>
+            </extensionElements>
+            <subProcess id="phase13_e3399adf-39a7-4656-9fe8-f3912166cd17" name="phase5">
+              <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase13node1_e7a5b018-b056-4c38-9860-469c11966dce" name="Preprocess">
+                <extensionElements>
+                  <camunda:inputOutput>
+                    <camunda:inputParameter name="exec_path">Preprocess.exe</camunda:inputParameter>
+                  </camunda:inputOutput>
+                </extensionElements>
+              </serviceTask>
+              <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase15node1_f276dac1-2cd5-42ce-96dd-bd1a15b88ece" name="A-1">
+                <extensionElements>
+                  <camunda:inputOutput>
+                    <camunda:inputParameter name="exec_path">A-1.exe</camunda:inputParameter>
+                  </camunda:inputOutput>
+                </extensionElements>
+              </serviceTask>
+              <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase10node1_674eb968-91fd-4a01-b378-025e1553d691" name="A-2">
+                <extensionElements>
+                  <camunda:inputOutput>
+                    <camunda:inputParameter name="exec_path">A-2.exe</camunda:inputParameter>
+                  </camunda:inputOutput>
+                </extensionElements>
+              </serviceTask>
+              <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase16node1_0acd0747-0d60-42a9-90b0-8663681b58b5" name="A-3">
+                <extensionElements>
+                  <camunda:inputOutput>
+                    <camunda:inputParameter name="exec_path">A-3.exe</camunda:inputParameter>
+                  </camunda:inputOutput>
+                </extensionElements>
+              </serviceTask>
+              <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase14node1_8e032054-8458-4f1b-9a64-601bd1832c07" name="B-1">
+                <extensionElements>
+                  <camunda:inputOutput>
+                    <camunda:inputParameter name="exec_path">B-1.exe</camunda:inputParameter>
+                  </camunda:inputOutput>
+                </extensionElements>
+              </serviceTask>
+              <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase12node1_bd4c4f7a-bebd-4644-9ca1-6019432680f6" name="B-2">
+                <extensionElements>
+                  <camunda:inputOutput>
+                    <camunda:inputParameter name="exec_path">B-2.exe</camunda:inputParameter>
+                  </camunda:inputOutput>
+                </extensionElements>
+              </serviceTask>
+              <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase17node1_08c405b5-2f07-481e-9795-63f608f5eeec" name="B-3">
+                <extensionElements>
+                  <camunda:inputOutput>
+                    <camunda:inputParameter name="exec_path">B-3.exe</camunda:inputParameter>
+                  </camunda:inputOutput>
+                </extensionElements>
+              </serviceTask>
+              <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase11node1_23db6cc1-4a22-41f3-9bbf-9b706b1fc4bb" name="Reduce Activity">
+                <extensionElements>
+                  <camunda:inputOutput>
+                    <camunda:inputParameter name="exec_path">Reduce.exe</camunda:inputParameter>
+                  </camunda:inputOutput>
+                </extensionElements>
+              </serviceTask>
+              <sequenceFlow id="Flow_phase13node1_phase15node1_81652a90-2f14-40eb-a1e5-8ab9c7bfaefc" sourceRef="phase13node1_e7a5b018-b056-4c38-9860-469c11966dce" targetRef="phase15node1_f276dac1-2cd5-42ce-96dd-bd1a15b88ece"/>
+              <sequenceFlow id="Flow_phase15node1_phase10node1_16c5dfe9-01a3-46c9-b04d-a15b7891ba91" sourceRef="phase15node1_f276dac1-2cd5-42ce-96dd-bd1a15b88ece" targetRef="phase10node1_674eb968-91fd-4a01-b378-025e1553d691"/>
+              <sequenceFlow id="Flow_phase10node1_phase16node1_11de63c0-47ee-4a4d-aaf1-c5d778009bab" sourceRef="phase10node1_674eb968-91fd-4a01-b378-025e1553d691" targetRef="phase16node1_0acd0747-0d60-42a9-90b0-8663681b58b5"/>
+              <sequenceFlow id="Flow_phase16node1_phase14node1_05d9aabd-5f3b-410d-90af-7d8ea5f40928" sourceRef="phase16node1_0acd0747-0d60-42a9-90b0-8663681b58b5" targetRef="phase14node1_8e032054-8458-4f1b-9a64-601bd1832c07"/>
+              <sequenceFlow id="Flow_phase14node1_phase12node1_4132a0da-7c03-448f-81d3-f40b2a287535" sourceRef="phase14node1_8e032054-8458-4f1b-9a64-601bd1832c07" targetRef="phase12node1_bd4c4f7a-bebd-4644-9ca1-6019432680f6"/>
+              <sequenceFlow id="Flow_phase12node1_phase17node1_15471908-1c92-4aee-a14c-e1470a942abe" sourceRef="phase12node1_bd4c4f7a-bebd-4644-9ca1-6019432680f6" targetRef="phase17node1_08c405b5-2f07-481e-9795-63f608f5eeec"/>
+              <sequenceFlow id="Flow_phase17node1_phase11node1_80d08cff-2e86-45cf-8216-decda1fc6bd3" sourceRef="phase17node1_08c405b5-2f07-481e-9795-63f608f5eeec" targetRef="phase11node1_23db6cc1-4a22-41f3-9bbf-9b706b1fc4bb"/>
+              <startEvent id="start_phase13_632a49ef-d9d6-43ea-a264-51b15e2c846c"/>
+              <sequenceFlow id="sequenceFlow_08cf5d21-5d35-413c-a8d7-1d06bc87bff4" sourceRef="start_phase13_632a49ef-d9d6-43ea-a264-51b15e2c846c" targetRef="phase13node1_e7a5b018-b056-4c38-9860-469c11966dce"/>
+              <endEvent id="end_phase13_49068149-0896-40f0-b72b-27cf12eb8676"/>
+              <sequenceFlow id="sequenceFlow_4e11711a-0136-4e13-bb72-75bd2cf09f34" sourceRef="phase11node1_23db6cc1-4a22-41f3-9bbf-9b706b1fc4bb" targetRef="end_phase13_49068149-0896-40f0-b72b-27cf12eb8676"/>
+            </subProcess>
+            <exclusiveGateway id="exclusiveGateway_6291fe93-490d-49c1-b5b9-bebbe41f0329">
+              <extensionElements>
+                <camunda:executionListener class="org.buaa.pomes.camunda.listener.LoopFinishListener" event="start"/>
+              </extensionElements>
+            </exclusiveGateway>
+            <sequenceFlow id="Flow_26d3134d-a5b1-4cda-b1dc-61dc3958281c" sourceRef="phase13_e3399adf-39a7-4656-9fe8-f3912166cd17" targetRef="exclusiveGateway_6291fe93-490d-49c1-b5b9-bebbe41f0329"/>
+            <sequenceFlow id="Flow_Continue_c768644e-5759-440b-bee5-570bcf86b418" sourceRef="exclusiveGateway_6291fe93-490d-49c1-b5b9-bebbe41f0329" targetRef="phase13_e3399adf-39a7-4656-9fe8-f3912166cd17">
+              <conditionExpression id="conditionExpression_5aa1dc1d-a874-41ca-add1-a8b75281ebe5">${loopCount &lt; loopEnd}</conditionExpression>
+            </sequenceFlow>
+            <endEvent id="end_b5411860-0424-4604-ae69-ca831b38a8f6"/>
+            <sequenceFlow id="Flow_Break_0b0aaec9-7f1d-4635-9dd1-739dd13cab80" sourceRef="exclusiveGateway_6291fe93-490d-49c1-b5b9-bebbe41f0329" targetRef="end_b5411860-0424-4604-ae69-ca831b38a8f6">
+              <conditionExpression id="conditionExpression_7cc25120-6ac7-4c4f-8751-b02bd97d85f3">${loopCount &gt;= loopEnd}</conditionExpression>
+            </sequenceFlow>
+            <startEvent id="start_5a138c4a-f515-4cb0-a41c-f43047abad0b"/>
+            <sequenceFlow id="sequenceFlow_b554339d-395a-49e7-8544-5b26d668ba28" sourceRef="start_5a138c4a-f515-4cb0-a41c-f43047abad0b" targetRef="phase13_e3399adf-39a7-4656-9fe8-f3912166cd17"/>
+          </subProcess>
+          <subProcess id="phase7_7eabbca6-ead1-41bb-9896-15eb9ede3a87" name="phase4">
+            <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase7node1_14103b6b-1849-4b4e-9966-98b7d0d22205" name="Stress Value Analysis">
+              <extensionElements>
+                <camunda:inputOutput>
+                  <camunda:inputParameter name="exec_path">StressValueAnalysis.exe</camunda:inputParameter>
+                </camunda:inputOutput>
+              </extensionElements>
+            </serviceTask>
+            <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase8node1_2011ae0e-57c8-4249-adb1-445df7a445d2" name="Adaptation Estimation">
+              <extensionElements>
+                <camunda:inputOutput>
+                  <camunda:inputParameter name="exec_path">AdaptationEst.exe</camunda:inputParameter>
+                </camunda:inputOutput>
+              </extensionElements>
+            </serviceTask>
+            <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase9node1_2ac6975e-3215-4bec-abe0-289811f2a180" name="Genetic Algorithm B">
+              <extensionElements>
+                <camunda:inputOutput>
+                  <camunda:inputParameter name="exec_path">GA-B.exe</camunda:inputParameter>
+                </camunda:inputOutput>
+              </extensionElements>
+            </serviceTask>
+            <sequenceFlow id="Flow_phase7node1_phase8node1_dcc65e59-a6cf-4308-86aa-674301b7ed51" sourceRef="phase7node1_14103b6b-1849-4b4e-9966-98b7d0d22205" targetRef="phase8node1_2011ae0e-57c8-4249-adb1-445df7a445d2"/>
+            <sequenceFlow id="Flow_phase8node1_phase9node1_64e9fd21-0e4a-4dd5-90d0-b78de073c792" sourceRef="phase8node1_2011ae0e-57c8-4249-adb1-445df7a445d2" targetRef="phase9node1_2ac6975e-3215-4bec-abe0-289811f2a180"/>
+            <startEvent id="start_phase7_53243b35-a335-4676-9bc2-f5a36cf1b897"/>
+            <sequenceFlow id="sequenceFlow_2d3ca438-aa35-43e1-8ebc-7a12bd0ebfe7" sourceRef="start_phase7_53243b35-a335-4676-9bc2-f5a36cf1b897" targetRef="phase7node1_14103b6b-1849-4b4e-9966-98b7d0d22205"/>
+            <endEvent id="end_phase7_23e7c2fd-58f2-4926-a08a-ad28ae089dd3"/>
+            <sequenceFlow id="sequenceFlow_1b572c3e-6b79-4eb9-8848-d55225d71993" sourceRef="phase9node1_2ac6975e-3215-4bec-abe0-289811f2a180" targetRef="end_phase7_23e7c2fd-58f2-4926-a08a-ad28ae089dd3"/>
+          </subProcess>
+          <sequenceFlow id="Flow_15fe8b60-3a5a-42c6-97dd-81bd27681022" sourceRef="phase5_aa87962a-5d05-444f-a109-3734cf4ad913" targetRef="container_9e24dbe3-1c0f-40da-9656-9cc38cfd30d0"/>
+          <sequenceFlow id="Flow_b50b4ac7-fdc0-4de2-9741-c8daaeb628bb" sourceRef="container_9e24dbe3-1c0f-40da-9656-9cc38cfd30d0" targetRef="phase7_7eabbca6-ead1-41bb-9896-15eb9ede3a87"/>
+          <exclusiveGateway id="exclusiveGateway_61a92409-f734-4b98-b6c5-8e6104409b1b">
+            <extensionElements>
+              <camunda:executionListener class="org.buaa.pomes.camunda.listener.LoopFinishListener" event="start"/>
+            </extensionElements>
+          </exclusiveGateway>
+          <sequenceFlow id="Flow_ef55f7fc-344e-49bb-a9ff-7eee10379f26" sourceRef="phase7_7eabbca6-ead1-41bb-9896-15eb9ede3a87" targetRef="exclusiveGateway_61a92409-f734-4b98-b6c5-8e6104409b1b"/>
+          <sequenceFlow id="Flow_Continue_b0f008db-8f2d-472c-a6de-d4c9a8ff6e4d" sourceRef="exclusiveGateway_61a92409-f734-4b98-b6c5-8e6104409b1b" targetRef="phase5_aa87962a-5d05-444f-a109-3734cf4ad913">
+            <conditionExpression id="conditionExpression_7dff2133-9d9f-48ba-8203-e9797e30f9c9">${loopCount &lt; loopEnd}</conditionExpression>
+          </sequenceFlow>
+          <endEvent id="end_cb0c41e8-3be1-4812-b075-da003eed11a2"/>
+          <sequenceFlow id="Flow_Break_29501930-4c60-4b6b-9e65-a6698f33a8bf" sourceRef="exclusiveGateway_61a92409-f734-4b98-b6c5-8e6104409b1b" targetRef="end_cb0c41e8-3be1-4812-b075-da003eed11a2">
+            <conditionExpression id="conditionExpression_7bb93c33-574a-485c-a4b1-2da89b2b15b0">${loopCount &gt;= loopEnd}</conditionExpression>
+          </sequenceFlow>
+          <startEvent id="start_c5147241-89c2-414d-81d1-4b4467afbde0"/>
+          <sequenceFlow id="sequenceFlow_92381e01-d5dc-4142-9ed7-1216071d345f" sourceRef="start_c5147241-89c2-414d-81d1-4b4467afbde0" targetRef="phase5_aa87962a-5d05-444f-a109-3734cf4ad913"/>
+        </subProcess>
+        <subProcess id="phase1_614e5962-2935-40d9-a1f4-f77fa354754e" name="phase1">
+          <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase1node1_3b625c1a-d846-471e-abe2-d92dfefa79b7" name="Preprocess">
+            <extensionElements>
+              <camunda:inputOutput>
+                <camunda:inputParameter name="exec_path">Preprocess.exe</camunda:inputParameter>
+              </camunda:inputOutput>
+            </extensionElements>
+          </serviceTask>
+          <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase2node1_f80d9eb1-e15a-40c2-9e5f-54a23982f4e3" name="Divider">
+            <extensionElements>
+              <camunda:inputOutput>
+                <camunda:inputParameter name="exec_path">Divider.exe</camunda:inputParameter>
+              </camunda:inputOutput>
+            </extensionElements>
+          </serviceTask>
+          <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase3node1_263c6579-67da-42dc-8ed7-1b76581760a0" name="Sorter">
+            <extensionElements>
+              <camunda:inputOutput>
+                <camunda:inputParameter name="exec_path">Sorter.exe</camunda:inputParameter>
+              </camunda:inputOutput>
+            </extensionElements>
+          </serviceTask>
+          <sequenceFlow id="Flow_phase1node1_phase2node1_089dfd83-262b-4e9c-8cf2-91f51423ffc3" sourceRef="phase1node1_3b625c1a-d846-471e-abe2-d92dfefa79b7" targetRef="phase2node1_f80d9eb1-e15a-40c2-9e5f-54a23982f4e3"/>
+          <sequenceFlow id="Flow_phase2node1_phase3node1_19fc1ad6-51ca-458d-8e8f-0ff294d827af" sourceRef="phase2node1_f80d9eb1-e15a-40c2-9e5f-54a23982f4e3" targetRef="phase3node1_263c6579-67da-42dc-8ed7-1b76581760a0"/>
+          <startEvent id="start_phase1_d04107c8-374e-4770-bf56-5d88510f3261"/>
+          <sequenceFlow id="sequenceFlow_73263ad7-6165-4495-8249-e6b456f5decb" sourceRef="start_phase1_d04107c8-374e-4770-bf56-5d88510f3261" targetRef="phase1node1_3b625c1a-d846-471e-abe2-d92dfefa79b7"/>
+          <endEvent id="end_phase1_e6faa569-ecb1-448d-b523-42c14382176a"/>
+          <sequenceFlow id="sequenceFlow_8beabff2-baf0-4f13-a398-2bb2c0090182" sourceRef="phase3node1_263c6579-67da-42dc-8ed7-1b76581760a0" targetRef="end_phase1_e6faa569-ecb1-448d-b523-42c14382176a"/>
+        </subProcess>
+        <serviceTask camunda:class="org.buaa.pomes.camunda.caller.AutoActivityCaller" id="phase4node1_80a2ae2f-a3dd-4b70-a21e-38e5b159b2b4" name="Genetic Algorithm A">
+          <extensionElements>
+            <camunda:inputOutput>
+              <camunda:inputParameter name="exec_path">GA-A.exe</camunda:inputParameter>
+            </camunda:inputOutput>
+          </extensionElements>
+        </serviceTask>
+        <sequenceFlow id="Flow_ae2fbf55-53e6-44f8-aa82-7ebff769e5a1" sourceRef="container_9bbe3d6b-f411-4437-83d6-5bdfcbfd0eec" targetRef="phase4node1_80a2ae2f-a3dd-4b70-a21e-38e5b159b2b4"/>
+        <sequenceFlow id="Flow_9caf472c-ba79-42f6-a07d-eb41a10e7b63" sourceRef="phase1_614e5962-2935-40d9-a1f4-f77fa354754e" targetRef="container_9bbe3d6b-f411-4437-83d6-5bdfcbfd0eec"/>
+        <exclusiveGateway id="exclusiveGateway_95ea0952-7b51-4816-945a-e55abbd7c3e1">
+          <extensionElements>
+            <camunda:executionListener class="org.buaa.pomes.camunda.listener.LoopFinishListener" event="start"/>
+          </extensionElements>
+        </exclusiveGateway>
+        <sequenceFlow id="Flow_fa1aef25-a74a-49c1-9dda-e8d225a5e3e7" sourceRef="phase4node1_80a2ae2f-a3dd-4b70-a21e-38e5b159b2b4" targetRef="exclusiveGateway_95ea0952-7b51-4816-945a-e55abbd7c3e1"/>
+        <sequenceFlow id="Flow_Continue_b58c44cb-3b3a-499c-a129-e65e40a7c043" sourceRef="exclusiveGateway_95ea0952-7b51-4816-945a-e55abbd7c3e1" targetRef="phase1_614e5962-2935-40d9-a1f4-f77fa354754e">
+          <conditionExpression id="conditionExpression_b57629b7-6b6f-43fe-a68a-7adfeef63c5a">${loopCount &lt; loopEnd}</conditionExpression>
+        </sequenceFlow>
+        <endEvent id="end_da1e0c65-6403-4e8f-ae66-4e5283ef25c1"/>
+        <sequenceFlow id="Flow_Break_7571c236-287c-4558-9ef1-1ced2de81692" sourceRef="exclusiveGateway_95ea0952-7b51-4816-945a-e55abbd7c3e1" targetRef="end_da1e0c65-6403-4e8f-ae66-4e5283ef25c1">
+          <conditionExpression id="conditionExpression_598a458f-ab30-4fac-b5f4-adbc6a20f336">${loopCount &gt;= loopEnd}</conditionExpression>
+        </sequenceFlow>
+        <startEvent id="start_f0a34c44-df7e-4690-b2e9-82c5a22ae961"/>
+        <sequenceFlow id="sequenceFlow_15180739-2fe2-4fc4-8e3a-2c09e76bf8e6" sourceRef="start_f0a34c44-df7e-4690-b2e9-82c5a22ae961" targetRef="phase1_614e5962-2935-40d9-a1f4-f77fa354754e"/>
+      </subProcess>
+      <startEvent id="start_15b9b5bd-089d-4d01-ae11-f8317fcfdc12"/>
+      <endEvent id="end_9f6ce797-dbca-4c5a-9e64-73becb1e4da7"/>
+      <sequenceFlow id="sequenceFlow_bbe41139-ff12-4c7d-bf53-e4b3f31dde33" sourceRef="start_15b9b5bd-089d-4d01-ae11-f8317fcfdc12" targetRef="container_8b739d3f-5f0a-41fe-89bd-17fd6870e4ac"/>
+      <sequenceFlow id="sequenceFlow_7043f238-c2da-40d7-a2c9-0bc3eed2db93" sourceRef="container_8b739d3f-5f0a-41fe-89bd-17fd6870e4ac" targetRef="end_9f6ce797-dbca-4c5a-9e64-73becb1e4da7"/>
+    </subProcess>
+    <endEvent id="end_e003df23-cc3a-4234-a46b-6bde7212ba87"/>
+    <sequenceFlow id="Flow_start_2de1f81e-c3b6-432d-ab8c-ec0028c9383e_container_108b2077-2221-4a5f-8aaf-4760c7f2ca73_a441d174-c102-4c5b-b481-a80ac941f808" sourceRef="start_2de1f81e-c3b6-432d-ab8c-ec0028c9383e" targetRef="initProcess_50ca3c0b-272d-4d5f-8e29-bca2713fb8da"/>
+    <sequenceFlow id="Flow_initProcess_50ca3c0b-272d-4d5f-8e29-bca2713fb8da_container_108b2077-2221-4a5f-8aaf-4760c7f2ca73_5d25d6b2-4c7d-4374-b269-b301bb090ec4" sourceRef="initProcess_50ca3c0b-272d-4d5f-8e29-bca2713fb8da" targetRef="container_108b2077-2221-4a5f-8aaf-4760c7f2ca73"/>
+    <sequenceFlow id="Flow_container_108b2077-2221-4a5f-8aaf-4760c7f2ca73_end_e003df23-cc3a-4234-a46b-6bde7212ba87_7adbe87d-76b5-4b57-afd3-f41d668b5389" sourceRef="container_108b2077-2221-4a5f-8aaf-4760c7f2ca73" targetRef="end_e003df23-cc3a-4234-a46b-6bde7212ba87"/>
+  </process>
+</definitions>
