@@ -1,0 +1,19 @@
+spring.datasource.url: jdbc:h2:file:./camunda-h2-database
+
+
+camunda:
+  bpm:
+    admin-user:
+      id: demo
+      password: demo
+    job-execution:
+      max-jobs-per-acquisition: 100
+      core-pool-size: 100
+      max-pool-size: 100
+#logging:
+#  level:
+#    root: debug
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 60
